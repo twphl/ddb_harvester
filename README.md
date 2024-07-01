@@ -51,5 +51,5 @@ Works more reliable, creates xml for each record
     - Less calls to API
 
 - Cons:
-    - Response needs further processing, api returns paginated xml
-    - Seems to not get all records, sometimes misses some records, needs further inspection
+    - Response needs further processing, api returns paginated xml with selection of records
+    - Seems to miss some records sometimes, needs further inspection
