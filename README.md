@@ -20,7 +20,7 @@ https://www.openarchives.org/OAI/openarchivesprotocol.html
 
 1. Gets list of sets via ListSets
 2. Collects record-identifiers for each set
-3. Gets record-data with GetRecord with multiple threads
+3. Gets record-data with GetRecord using multiple threads
   
 Works more reliable, creates xml for each record
   
