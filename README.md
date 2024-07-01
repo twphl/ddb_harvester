@@ -41,6 +41,13 @@ Works more reliable, creates xml for each record
 
 
 ### harvest_records_in_batches.py
+
+Set global vars for configuration
+
+>SAVE_DIR = ""                                  # Location to store metadata, use complete path e.g. /path/to/save/data  
+>MAX_RETRIES = 10                               # Number of retries  
+>THREADS = 10                                   # Number of threads use (os.cpu_count() or 1) * 5 for default  
+  
 1. Gets list of sets via ListSets
 2. Collects records via ListRecords
 3. Loops over paginated response
