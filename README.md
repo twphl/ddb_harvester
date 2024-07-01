@@ -1,5 +1,6 @@
 # ddb_harverster
-Two python scripts to download metadata from the ddb OAI/PMH-API.
+Two python scripts to download records from the [ddb](https://www.deutsche-digitale-bibliothek.de/) OAI/PMH-API. Collects records from all found sets.
+[Ometha](https://github.com/Deutsche-Digitale-Bibliothek/ddblabs-ometha) can be used to download data from specific sets. 
 
 ## API Docs:
 https://pro.deutsche-digitale-bibliothek.de/daten-nutzen/schnittstellen  
