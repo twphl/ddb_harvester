@@ -172,6 +172,7 @@ def parse_identifiers(xml_data: str) -> list:
 
     Returns:
         list: A list of identifiers.
+
     """
 
     identifiers = []
@@ -234,8 +235,6 @@ def process_record(identifier: str, session, set_spec: str):
         session: The requests session object.
         set_spec (str): The set specification (set-id).
 
-    Returns:
-        None
     """
 
     print(f"Processing record: {identifier}")
@@ -246,7 +245,6 @@ def process_record(identifier: str, session, set_spec: str):
         save_record_data(result.text, identifier, set_spec)
 
 
-
 def save_record_data(record_xml: str, identifier: str, dataset_id: str):
     """
     Save record as xml
@@ -255,9 +253,6 @@ def save_record_data(record_xml: str, identifier: str, dataset_id: str):
         record_xml (str): The record data as XML str.
         identifier (str): The identifier of the record.
         dataset_id (str): The set specification (set-id).
-
-    Returns:
-        None
 
     """
 
@@ -273,6 +268,7 @@ def save_record_data(record_xml: str, identifier: str, dataset_id: str):
 def harvest_ddb_data():
     """
     Harvest metadata from the DDB OAI-PMH endpoint.
+    
     """
 
     response = list_sets()
@@ -291,11 +287,16 @@ def harvest_ddb_data():
             if identifiers:
                 print(f"Found {len(identifiers)} identifiers for set {set_spec}")
 
-                with concurrent.futures.ThreadPoolExecutor(max_workers=THREADS) as executor:
+                with concurrent.futures.ThreadPoolExecutor(
+                    max_workers=THREADS
+                ) as executor:
                     futures = [
                         executor.submit(process_record, identifier, session, set_spec)
                         for identifier in identifiers
                     ]
+
+                    for future in concurrent.futures.as_completed(futures):
+                        future.result()
 
             else:
                 print(f"No identifiers found for set {set_spec}")
