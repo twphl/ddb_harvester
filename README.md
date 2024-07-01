@@ -13,7 +13,9 @@ https://www.openarchives.org/OAI/openarchivesprotocol.html
 
 ## Requirements:
 
-requests
+[requests](https://pypi.org/project/requests/)
+
+python -m pip install requests
 
 ### harvest_parallel.py
 
