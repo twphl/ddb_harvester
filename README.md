@@ -2,20 +2,17 @@
 Two python scripts to download metadata from the ddb OAI/PMH-API.
 
 ## API Docs:
-
 https://pro.deutsche-digitale-bibliothek.de/daten-nutzen/schnittstellen  
 https://wiki.deutsche-digitale-bibliothek.de/pages/viewpage.action?pageId=27627109
 
 ## Protocol Docs:
-
 https://www.openarchives.org/OAI/openarchivesprotocol.html
 
 
 ## Requirements:
-
 [requests](https://pypi.org/project/requests/)
 
-python -m pip install requests
+> python -m pip install requests
 
 ### harvest_parallel.py
 
@@ -39,9 +36,9 @@ Works more reliable, creates xml for each record
 2. Collects records via ListRecords
 3. Loops over paginated response
 
--> Pros:
+- Pros:
     - Less calls to API
 
--> Cons:
+- Cons:
     - Response needs further processing, api returns paginated xml
     - Gets incomplete responses sometimes (?)
