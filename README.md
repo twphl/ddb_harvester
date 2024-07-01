@@ -15,6 +15,7 @@ https://www.openarchives.org/OAI/openarchivesprotocol.html
 
 > python -m pip install requests
 
+
 ### harvest_parallel.py
 
 1. Gets list of sets via ListSets
@@ -27,10 +28,10 @@ Works more reliable, creates xml for each record
     - Record fetching in multiple threads  
     - No need to process response xml
 
-
 - Cons:
     - Getting identifiers for each set takes a while  
     - One API-Call for each record necessary
+
 
 ### harvest_records_in_batches.py
 1. Gets list of sets via ListSets
