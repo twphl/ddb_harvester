@@ -21,13 +21,10 @@ https://www.openarchives.org/OAI/openarchivesprotocol.html
 
 Set global vars for configuration
 
->OAI_URL = "https://oai.deutsche-digitale-bibliothek.de/oai"
->METADATA_PREFIX = "ddb"
 >SAVE_DIR = ""                                  # Location to store metadata, use complete path e.g. /path/to/save/data  
 >MAX_RETRIES = 10                               # Number of retries  
 >THREADS = 10                                   # Number of threads use (os.cpu_count() or 1) * 5 for default  
-
-
+  
 1. Gets list of sets via ListSets
 2. Collects record-identifiers for each set
 3. Gets record-data with GetRecord using multiple threads
@@ -53,4 +50,4 @@ Works more reliable, creates xml for each record
 
 - Cons:
     - Response needs further processing, api returns paginated xml with selection of records
-    - Seems to miss some records sometimes, needs further inspection
+    - Seems to miss records sometimes, needs further inspection
