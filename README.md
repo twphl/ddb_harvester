@@ -16,7 +16,7 @@ https://www.openarchives.org/OAI/openarchivesprotocol.html
 > python -m pip install requests
 
 
-### harvest_parallel.py
+### harvest_records.py
 
 1. Gets list of sets via ListSets
 2. Collects record-identifiers for each set
