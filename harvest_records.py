@@ -9,8 +9,9 @@ import requests
 
 OAI_URL = "https://oai.deutsche-digitale-bibliothek.de/oai"
 METADATA_PREFIX = "ddb"
-SAVE_DIR = "/home/tim/ddb_metadata2"
+SAVE_DIR = ""
 MAX_RETRIES = 10
+THREADS = 10
 
 
 def list_sets() -> requests.Response:
@@ -224,7 +225,7 @@ def get_record_information(
     return response
 
 
-def process_record(identifier: str, session, set_spec: str) -> None:
+def process_record(identifier: str, session, set_spec: str):
     """
     Process a single identifier and save the metadata to a file.
 
@@ -242,17 +243,16 @@ def process_record(identifier: str, session, set_spec: str) -> None:
     result = get_record_information(identifier, session)
 
     if result.status_code == 200:
-        save_metadata(result.text, identifier, set_spec)
-
-    return None
+        save_record_data(result.text, identifier, set_spec)
 
 
-def save_metadata(record_xml: str, identifier: str, dataset_id: str) -> None:
+
+def save_record_data(record_xml: str, identifier: str, dataset_id: str):
     """
-    Save the metadata to a file.
+    Save record as xml
 
     Args:
-        record_xml (str): The metadata as XML.
+        record_xml (str): The record data as XML str.
         identifier (str): The identifier of the record.
         dataset_id (str): The set specification (set-id).
 
@@ -268,8 +268,6 @@ def save_metadata(record_xml: str, identifier: str, dataset_id: str) -> None:
 
     with open(file_path, "w", encoding="utf-8") as f:
         f.write(record_xml)
-
-    return None
 
 
 def harvest_ddb_data():
@@ -293,7 +291,7 @@ def harvest_ddb_data():
             if identifiers:
                 print(f"Found {len(identifiers)} identifiers for set {set_spec}")
 
-                with concurrent.futures.ThreadPoolExecutor() as executor:
+                with concurrent.futures.ThreadPoolExecutor(max_workers=THREADS) as executor:
                     futures = [
                         executor.submit(process_record, identifier, session, set_spec)
                         for identifier in identifiers
