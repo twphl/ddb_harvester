@@ -41,4 +41,4 @@ Works more reliable, creates xml for each record
 
 - Cons:
     - Response needs further processing, api returns paginated xml
-    - Gets incomplete responses sometimes (?)
+    - Seems to not get all records, sometimes misses some records, needs further inspection
